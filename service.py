@@ -12,6 +12,11 @@ class Bilibili(pb2_grpc.BibiliServicer):
         name = request.name
         age = request.age
 
+        if not name or not age:
+            context.set_details('fuck xxx')
+            context.set_code(grpc.StatusCode.DATA_LOSS)
+            raise context
+
         result = 'my name is {}, i am {} years old'.format(name, age)
         return pb2.HelloDeweiReply(result=result)
 

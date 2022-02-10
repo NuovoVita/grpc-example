@@ -22,13 +22,17 @@ def test():
 def run():
     conn = grpc.insecure_channel('0.0.0.0:5000')
     client = pb2_grpc.BibiliStub(channel=conn)
-    # response = client.HelloDewei(
-    #     pb2.HelloDeweiReq(
-    #         name='dewei',
-    #         age=33
-    #     )
-    # )
-    # print(response.result)
+    try:
+        response = client.HelloDewei(
+            pb2.HelloDeweiReq(
+                name='dewei',
+                age=0
+            )
+        )
+        print(response.result)
+    except Exception as e:
+        print(e.code().name, e.code().value)
+        print(e.details())
 
     # response = client.TestClientRecvStream(pb2.TestClientRecvStreamReq(data='dewei'))
     # for item in response:
@@ -37,9 +41,9 @@ def run():
     # response = client.TestClientSendStream(test())
     # print(response.result)
 
-    response = client.TestTwoWayStream(test(), timeout=10)
-    for res in response:
-        print(res.result)
+    # response = client.TestTwoWayStream(test(), timeout=10)
+    # for res in response:
+    #     print(res.result)
 
 
 if __name__ == '__main__':
