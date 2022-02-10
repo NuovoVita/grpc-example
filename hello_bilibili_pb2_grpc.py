@@ -19,10 +19,20 @@ class BibiliStub(object):
                 request_serializer=hello__bilibili__pb2.HelloDeweiReq.SerializeToString,
                 response_deserializer=hello__bilibili__pb2.HelloDeweiReply.FromString,
                 )
-        self.HelloTest = channel.unary_unary(
+        self.HelloTest = channel.stream_stream(
                 '/test.Bibili/HelloTest',
                 request_serializer=hello__bilibili__pb2.HelloTestRequest.SerializeToString,
                 response_deserializer=hello__bilibili__pb2.HelloTestResponse.FromString,
+                )
+        self.TestClientRecvStream = channel.unary_stream(
+                '/test.Bibili/TestClientRecvStream',
+                request_serializer=hello__bilibili__pb2.TestClientRecvStreamReq.SerializeToString,
+                response_deserializer=hello__bilibili__pb2.TestClientRecvStreamResponse.FromString,
+                )
+        self.TestClientSendStream = channel.stream_unary(
+                '/test.Bibili/TestClientSendStream',
+                request_serializer=hello__bilibili__pb2.TestClientSendStreamRequest.SerializeToString,
+                response_deserializer=hello__bilibili__pb2.TestClientSendStreamResponse.FromString,
                 )
 
 
@@ -35,7 +45,19 @@ class BibiliServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def HelloTest(self, request, context):
+    def HelloTest(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TestClientRecvStream(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TestClientSendStream(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -49,10 +71,20 @@ def add_BibiliServicer_to_server(servicer, server):
                     request_deserializer=hello__bilibili__pb2.HelloDeweiReq.FromString,
                     response_serializer=hello__bilibili__pb2.HelloDeweiReply.SerializeToString,
             ),
-            'HelloTest': grpc.unary_unary_rpc_method_handler(
+            'HelloTest': grpc.stream_stream_rpc_method_handler(
                     servicer.HelloTest,
                     request_deserializer=hello__bilibili__pb2.HelloTestRequest.FromString,
                     response_serializer=hello__bilibili__pb2.HelloTestResponse.SerializeToString,
+            ),
+            'TestClientRecvStream': grpc.unary_stream_rpc_method_handler(
+                    servicer.TestClientRecvStream,
+                    request_deserializer=hello__bilibili__pb2.TestClientRecvStreamReq.FromString,
+                    response_serializer=hello__bilibili__pb2.TestClientRecvStreamResponse.SerializeToString,
+            ),
+            'TestClientSendStream': grpc.stream_unary_rpc_method_handler(
+                    servicer.TestClientSendStream,
+                    request_deserializer=hello__bilibili__pb2.TestClientSendStreamRequest.FromString,
+                    response_serializer=hello__bilibili__pb2.TestClientSendStreamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -82,7 +114,7 @@ class Bibili(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def HelloTest(request,
+    def HelloTest(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -92,8 +124,42 @@ class Bibili(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/test.Bibili/HelloTest',
+        return grpc.experimental.stream_stream(request_iterator, target, '/test.Bibili/HelloTest',
             hello__bilibili__pb2.HelloTestRequest.SerializeToString,
             hello__bilibili__pb2.HelloTestResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TestClientRecvStream(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/test.Bibili/TestClientRecvStream',
+            hello__bilibili__pb2.TestClientRecvStreamReq.SerializeToString,
+            hello__bilibili__pb2.TestClientRecvStreamResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TestClientSendStream(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/test.Bibili/TestClientSendStream',
+            hello__bilibili__pb2.TestClientSendStreamRequest.SerializeToString,
+            hello__bilibili__pb2.TestClientSendStreamResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -1,10 +1,10 @@
 import time
+from concurrent import futures
 
 import grpc
+
 import hello_bilibili_pb2 as pb2
 import hello_bilibili_pb2_grpc as pb2_grpc
-
-from concurrent import futures
 
 
 class Bilibili(pb2_grpc.BibiliServicer):
@@ -14,6 +14,31 @@ class Bilibili(pb2_grpc.BibiliServicer):
 
         result = 'my name is {}, i am {} years old'.format(name, age)
         return pb2.HelloDeweiReply(result=result)
+
+    def TestClientRecvStream(self, request, context):
+        index = 0
+        while context.is_active():
+            data = request.data
+            if data == 'close':
+                print('data is close, request wil cancel')
+                context.cancel()
+            time.sleep(1)
+            index += 1
+            result = 'send {} {}'.format(index, data)
+            print(result)
+            yield pb2.TestClientRecvStreamResponse(
+                result=result
+            )
+
+    def TestClientSendStream(self, request_iterator, context):
+        index = 0
+        for request in request_iterator:
+            print(request.data, ':', index)
+            if index == 10:
+                break
+            index += 1
+
+        return pb2.TestClientSendStreamResponse(result='ok')
 
 
 def run():

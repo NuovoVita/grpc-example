@@ -4,9 +4,16 @@ package test;
 
 service Bibili {
   rpc HelloDewei(HelloDeweiReq) returns (HelloDeweiReply){}
-  rpc HelloTest(HelloTestRequest) returns (HelloTestResponse){}
+  rpc HelloTest(stream HelloTestRequest) returns (stream HelloTestResponse){}
+  rpc TestClientRecvStream(TestClientRecvStreamReq) returns (stream TestClientRecvStreamResponse){}
+  rpc TestClientSendStream(stream TestClientSendStreamRequest) returns (TestClientSendStreamResponse){}
 }
 
+// 传输方式
+// 1: unary 单程
+// 2: stream  1: 双向 客户端请求服务器端（流），服务器端请求客户端（流）
+//            2: 单向 服务器端接收到客户端（流），服务器端返回客户端（非流）
+//            3: 单向 服务器端接收到客户端（非流），服务器端send给客户端（流）
 message HelloDeweiReq {
   string name = 1;
   int32 age = 2;
@@ -20,15 +27,31 @@ message HelloTestRequest {
   string name = 1;
   int64 age = 2;
   repeated string data = 3;
+
+  message HelloTestRequestNumberValue {
+    string name = 1;
+    int32 age = 2;
+    bool is_active = 3;
+  }
   map<string, HelloTestRequestNumberValue> number = 4; // string, int32, bool
 }
 
-message HelloTestRequestNumberValue {
-  string name = 1;
-  int32 age = 2;
-  bool is_active = 3;
+
+message HelloTestResponse {}
+
+message TestClientRecvStreamReq {
+  string data = 1;
 }
 
-message HelloTestResponse {
+message TestClientRecvStreamResponse {
+  string result = 1;
+}
 
+
+message TestClientSendStreamRequest {
+  string data = 1;
+}
+
+message TestClientSendStreamResponse {
+  string result = 1;
 }
