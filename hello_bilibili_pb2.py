@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14hello_bilibili.proto\x12\x04test\"*\n\rHelloDeweiReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x05\"!\n\x0fHelloDeweiReply\x12\x0e\n\x06result\x18\x01 \x01(\t\"\x9f\x02\n\x10HelloTestRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x61ta\x18\x03 \x03(\t\x12\x32\n\x06number\x18\x04 \x03(\x0b\x32\".test.HelloTestRequest.NumberEntry\x1aK\n\x1bHelloTestRequestNumberValue\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x05\x12\x11\n\tis_active\x18\x03 \x01(\x08\x1a\x61\n\x0bNumberEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.test.HelloTestRequest.HelloTestRequestNumberValue:\x02\x38\x01\"\x13\n\x11HelloTestResponse\"\'\n\x17TestClientRecvStreamReq\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\".\n\x1cTestClientRecvStreamResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"+\n\x1bTestClientSendStreamRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\".\n\x1cTestClientSendStreamResponse\x12\x0e\n\x06result\x18\x01 \x01(\t2\xca\x02\n\x06\x42ibili\x12:\n\nHelloDewei\x12\x13.test.HelloDeweiReq\x1a\x15.test.HelloDeweiReply\"\x00\x12\x42\n\tHelloTest\x12\x16.test.HelloTestRequest\x1a\x17.test.HelloTestResponse\"\x00(\x01\x30\x01\x12]\n\x14TestClientRecvStream\x12\x1d.test.TestClientRecvStreamReq\x1a\".test.TestClientRecvStreamResponse\"\x00\x30\x01\x12\x61\n\x14TestClientSendStream\x12!.test.TestClientSendStreamRequest\x1a\".test.TestClientSendStreamResponse\"\x00(\x01\x62\x06proto3'
+  serialized_pb=b'\n\x14hello_bilibili.proto\x12\x04test\"*\n\rHelloDeweiReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x05\"!\n\x0fHelloDeweiReply\x12\x0e\n\x06result\x18\x01 \x01(\t\"\x9f\x02\n\x10HelloTestRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x61ta\x18\x03 \x03(\t\x12\x32\n\x06number\x18\x04 \x03(\x0b\x32\".test.HelloTestRequest.NumberEntry\x1aK\n\x1bHelloTestRequestNumberValue\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x05\x12\x11\n\tis_active\x18\x03 \x01(\x08\x1a\x61\n\x0bNumberEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.test.HelloTestRequest.HelloTestRequestNumberValue:\x02\x38\x01\"\x13\n\x11HelloTestResponse\"\'\n\x17TestClientRecvStreamReq\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\".\n\x1cTestClientRecvStreamResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"+\n\x1bTestClientSendStreamRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\".\n\x1cTestClientSendStreamResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"\'\n\x17TestTwoWayStreamRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"*\n\x18TestTwoWayStreamResponse\x12\x0e\n\x06result\x18\x01 \x01(\t2\xa3\x03\n\x06\x42ibili\x12:\n\nHelloDewei\x12\x13.test.HelloDeweiReq\x1a\x15.test.HelloDeweiReply\"\x00\x12\x42\n\tHelloTest\x12\x16.test.HelloTestRequest\x1a\x17.test.HelloTestResponse\"\x00(\x01\x30\x01\x12]\n\x14TestClientRecvStream\x12\x1d.test.TestClientRecvStreamReq\x1a\".test.TestClientRecvStreamResponse\"\x00\x30\x01\x12\x61\n\x14TestClientSendStream\x12!.test.TestClientSendStreamRequest\x1a\".test.TestClientSendStreamResponse\"\x00(\x01\x12W\n\x10TestTwoWayStream\x12\x1d.test.TestTwoWayStreamRequest\x1a\x1e.test.TestTwoWayStreamResponse\"\x00(\x01\x30\x01\x62\x06proto3'
 )
 
 
@@ -384,6 +384,70 @@ _TESTCLIENTSENDSTREAMRESPONSE = _descriptor.Descriptor(
   serialized_end=600,
 )
 
+
+_TESTTWOWAYSTREAMREQUEST = _descriptor.Descriptor(
+  name='TestTwoWayStreamRequest',
+  full_name='test.TestTwoWayStreamRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='data', full_name='test.TestTwoWayStreamRequest.data', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=602,
+  serialized_end=641,
+)
+
+
+_TESTTWOWAYSTREAMRESPONSE = _descriptor.Descriptor(
+  name='TestTwoWayStreamResponse',
+  full_name='test.TestTwoWayStreamResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='test.TestTwoWayStreamResponse.result', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=643,
+  serialized_end=685,
+)
+
 _HELLOTESTREQUEST_HELLOTESTREQUESTNUMBERVALUE.containing_type = _HELLOTESTREQUEST
 _HELLOTESTREQUEST_NUMBERENTRY.fields_by_name['value'].message_type = _HELLOTESTREQUEST_HELLOTESTREQUESTNUMBERVALUE
 _HELLOTESTREQUEST_NUMBERENTRY.containing_type = _HELLOTESTREQUEST
@@ -396,6 +460,8 @@ DESCRIPTOR.message_types_by_name['TestClientRecvStreamReq'] = _TESTCLIENTRECVSTR
 DESCRIPTOR.message_types_by_name['TestClientRecvStreamResponse'] = _TESTCLIENTRECVSTREAMRESPONSE
 DESCRIPTOR.message_types_by_name['TestClientSendStreamRequest'] = _TESTCLIENTSENDSTREAMREQUEST
 DESCRIPTOR.message_types_by_name['TestClientSendStreamResponse'] = _TESTCLIENTSENDSTREAMRESPONSE
+DESCRIPTOR.message_types_by_name['TestTwoWayStreamRequest'] = _TESTTWOWAYSTREAMREQUEST
+DESCRIPTOR.message_types_by_name['TestTwoWayStreamResponse'] = _TESTTWOWAYSTREAMRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HelloDeweiReq = _reflection.GeneratedProtocolMessageType('HelloDeweiReq', (_message.Message,), {
@@ -470,6 +536,20 @@ TestClientSendStreamResponse = _reflection.GeneratedProtocolMessageType('TestCli
   })
 _sym_db.RegisterMessage(TestClientSendStreamResponse)
 
+TestTwoWayStreamRequest = _reflection.GeneratedProtocolMessageType('TestTwoWayStreamRequest', (_message.Message,), {
+  'DESCRIPTOR' : _TESTTWOWAYSTREAMREQUEST,
+  '__module__' : 'hello_bilibili_pb2'
+  # @@protoc_insertion_point(class_scope:test.TestTwoWayStreamRequest)
+  })
+_sym_db.RegisterMessage(TestTwoWayStreamRequest)
+
+TestTwoWayStreamResponse = _reflection.GeneratedProtocolMessageType('TestTwoWayStreamResponse', (_message.Message,), {
+  'DESCRIPTOR' : _TESTTWOWAYSTREAMRESPONSE,
+  '__module__' : 'hello_bilibili_pb2'
+  # @@protoc_insertion_point(class_scope:test.TestTwoWayStreamResponse)
+  })
+_sym_db.RegisterMessage(TestTwoWayStreamResponse)
+
 
 _HELLOTESTREQUEST_NUMBERENTRY._options = None
 
@@ -480,8 +560,8 @@ _BIBILI = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=603,
-  serialized_end=933,
+  serialized_start=688,
+  serialized_end=1107,
   methods=[
   _descriptor.MethodDescriptor(
     name='HelloDewei',
@@ -520,6 +600,16 @@ _BIBILI = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_TESTCLIENTSENDSTREAMREQUEST,
     output_type=_TESTCLIENTSENDSTREAMRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TestTwoWayStream',
+    full_name='test.Bibili.TestTwoWayStream',
+    index=4,
+    containing_service=None,
+    input_type=_TESTTWOWAYSTREAMREQUEST,
+    output_type=_TESTTWOWAYSTREAMRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

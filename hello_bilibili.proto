@@ -7,6 +7,7 @@ service Bibili {
   rpc HelloTest(stream HelloTestRequest) returns (stream HelloTestResponse){}
   rpc TestClientRecvStream(TestClientRecvStreamReq) returns (stream TestClientRecvStreamResponse){}
   rpc TestClientSendStream(stream TestClientSendStreamRequest) returns (TestClientSendStreamResponse){}
+  rpc TestTwoWayStream(stream TestTwoWayStreamRequest) returns (stream TestTwoWayStreamResponse){}
 }
 
 // 传输方式
@@ -23,6 +24,7 @@ message HelloDeweiReply {
   string result = 1;
 }
 
+
 message HelloTestRequest {
   string name = 1;
   int64 age = 2;
@@ -36,8 +38,8 @@ message HelloTestRequest {
   map<string, HelloTestRequestNumberValue> number = 4; // string, int32, bool
 }
 
-
 message HelloTestResponse {}
+
 
 message TestClientRecvStreamReq {
   string data = 1;
@@ -53,5 +55,14 @@ message TestClientSendStreamRequest {
 }
 
 message TestClientSendStreamResponse {
+  string result = 1;
+}
+
+
+message TestTwoWayStreamRequest {
+  string data = 1;
+}
+
+message TestTwoWayStreamResponse {
   string result = 1;
 }

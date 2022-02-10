@@ -40,6 +40,16 @@ class Bilibili(pb2_grpc.BibiliServicer):
 
         return pb2.TestClientSendStreamResponse(result='ok')
 
+    def TestTwoWayStream(self, request_iterator, context):
+        index = 0
+        for request in request_iterator:
+            data = request.data
+
+            if index == 3:
+                time.sleep(15)
+            index += 1
+            yield pb2.TestTwoWayStreamResponse(result='service send client {}'.format(data))
+
 
 def run():
     grpc_server = grpc.server(

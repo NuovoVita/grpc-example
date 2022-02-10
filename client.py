@@ -34,8 +34,12 @@ def run():
     # for item in response:
     #     print item.result
 
-    response = client.TestClientSendStream(test())
-    print(response.result)
+    # response = client.TestClientSendStream(test())
+    # print(response.result)
+
+    response = client.TestTwoWayStream(test(), timeout=10)
+    for res in response:
+        print(res.result)
 
 
 if __name__ == '__main__':
