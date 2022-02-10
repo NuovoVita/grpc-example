@@ -17,7 +17,11 @@ class Bilibili(pb2_grpc.BibiliServicer):
             context.set_code(grpc.StatusCode.DATA_LOSS)
             raise context
 
+        context.set_trailing_metadata((('name', 'pig'), ('key', 'value')))
+        headers = context.invocation_metadata()
+        print(headers[0].key, headers[0].value)
         result = 'my name is {}, i am {} years old'.format(name, age)
+        context.set_compression(grpc.Compression.Gzip)
         return pb2.HelloDeweiReply(result=result)
 
     def TestClientRecvStream(self, request, context):
@@ -30,7 +34,6 @@ class Bilibili(pb2_grpc.BibiliServicer):
             time.sleep(1)
             index += 1
             result = 'send {} {}'.format(index, data)
-            print(result)
             yield pb2.TestClientRecvStreamResponse(
                 result=result
             )
@@ -58,7 +61,12 @@ class Bilibili(pb2_grpc.BibiliServicer):
 
 def run():
     grpc_server = grpc.server(
-        futures.ThreadPoolExecutor(max_workers=4)
+        futures.ThreadPoolExecutor(max_workers=4),
+        compression=grpc.Compression.Gzip,
+        options=[
+            ('grpc.max_send_message_length', 50 * 1024 * 1024),
+            ('grpc.max_receive_message_length', 50 * 1024 * 1024)
+        ]
     )
     pb2_grpc.add_BibiliServicer_to_server(Bilibili(), grpc_server)
     grpc_server.add_insecure_port('0.0.0.0:5000')
