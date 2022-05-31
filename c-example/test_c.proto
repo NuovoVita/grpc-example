@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package test_c;
+
+service Greeter {
+  rpc MyTestFirst (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
