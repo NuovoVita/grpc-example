@@ -11,3 +11,6 @@ python service.py
 python client.py
 ```
 
+### support
+
+  grpcio-tools==1.41.1 这个版本对应的 protobuf-3.17.3，最后的一个支持 Python2 的库。
