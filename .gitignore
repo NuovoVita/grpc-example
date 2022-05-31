@@ -25,7 +25,6 @@ __pycache__/
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
@@ -56,7 +55,6 @@ Thumbs.db
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -97,13 +95,13 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+test/
 
 # Translations
 *.mo
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -120,7 +118,6 @@ docs/_build/
 
 # PyBuilder
 .pybuilder/
-target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
